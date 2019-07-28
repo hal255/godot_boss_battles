@@ -5,6 +5,8 @@
 
 [node name="World" type="Node"]
 
+[node name="Config_Scene" type="Node" parent="."]
+
 [node name="player" type="KinematicBody2D" parent="."]
 position = Vector2( 523, 290 )
 script = ExtResource( 1 )

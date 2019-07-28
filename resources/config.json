@@ -1,0 +1,10 @@
+{
+	"config_properties":{
+		"player":{
+			"walk_speed": 300,
+			"slide_speed": 3,
+			"h_direction": 0,
+			"v_direction": 0
+		}
+	}
+}
