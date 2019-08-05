@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="2019.07.31" orientation="orthogonal" renderorder="right-down" compressionlevel="-1" width="22" height="3" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="13">
+ <tileset firstgid="1" source="my_kenney_assets/panel_blue.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="22" height="3">
+  <data encoding="csv">
+1,3221225480,3221225480,3221225480,3221225480,3221225480,3221225480,3221225480,3221225480,3221225480,3221225480,3221225480,3221225480,3221225480,3221225480,3221225480,3221225480,3221225480,3221225480,3221225480,3221225480,3,
+4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,
+7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,9
+</data>
+ </layer>
+</map>

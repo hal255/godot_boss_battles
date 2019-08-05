@@ -4,7 +4,9 @@
 			"walk_speed": 300,
 			"slide_speed": 3,
 			"h_direction": 0,
-			"v_direction": 0
+			"v_direction": 0,
+			"swing_speed": 300,
+			"swing_rotate_speed": 1.5
 		}
 	}
 }

@@ -1,27 +1,88 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://gd_scripts/player_movement.gd" type="Script" id=1]
+[ext_resource path="res://gd_scripts/script_player_movement.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/icon.png" type="Texture" id=2]
+[ext_resource path="res://gd_scripts/weapon_scripts/script_weapon_handler.gd" type="Script" id=3]
+[ext_resource path="res://assets/art/my_kenney_assets/cursorSword_silver.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/my_kenney_assets/ui_panel.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/my_kenney_assets/buttonSquare_beige.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/my_kenney_assets/buttonSquare_beige_pressed.png" type="Texture" id=7]
+[ext_resource path="res://gd_scripts/weapon_scripts/script_weapon_change.gd" type="Script" id=8]
+[ext_resource path="res://assets/art/my_kenney_assets/cursorSword_bronze.png" type="Texture" id=9]
 
-[node name="World" type="Node"]
+[node name="world" type="Node"]
 
-[node name="Config_Scene" type="Node" parent="."]
+[node name="config_scene" type="Node" parent="."]
 
-[node name="player" type="KinematicBody2D" parent="."]
+[node name="player" type="Node" parent="."]
+
+[node name="player_body" type="KinematicBody2D" parent="player"]
 position = Vector2( 523, 290 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="player"]
+[node name="Sprite" type="Sprite" parent="player/player_body"]
 texture = ExtResource( 2 )
 
-[node name="enemy" type="KinematicBody2D" parent="."]
-position = Vector2( 524, 414 )
+[node name="player_weapon" type="KinematicBody2D" parent="player"]
+position = Vector2( 489, 287 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="enemy"]
+[node name="Sprite" type="Sprite" parent="player/player_weapon"]
+texture = ExtResource( 4 )
+
+[node name="enemies" type="Node" parent="."]
+
+[node name="enemy" type="KinematicBody2D" parent="enemies"]
+position = Vector2( 524, 414 )
+scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="enemies/enemy"]
 texture = ExtResource( 2 )
+
+[node name="ui_panel" type="Panel" parent="."]
+
+[node name="ui_hotkeys" type="TextureRect" parent="ui_panel"]
+margin_left = 198.0
+margin_top = 494.0
+margin_right = 902.0
+margin_bottom = 590.0
+texture = ExtResource( 5 )
+
+[node name="ui_button_weapon01" type="TextureButton" parent="ui_panel/ui_hotkeys"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+script = ExtResource( 8 )
+
+[node name="TextureRect" type="TextureRect" parent="ui_panel/ui_hotkeys/ui_button_weapon01"]
+margin_left = 5.0
+margin_top = 6.0
+margin_right = 39.0
+margin_bottom = 43.0
+texture = ExtResource( 4 )
+
+[node name="ui_button_weapon02" type="TextureButton" parent="ui_panel/ui_hotkeys"]
+margin_left = 48.0
+margin_right = 93.0
+margin_bottom = 49.0
+action_mode = 0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+script = ExtResource( 8 )
+
+[node name="TextureRect" type="TextureRect" parent="ui_panel/ui_hotkeys/ui_button_weapon02"]
+margin_left = 5.0
+margin_top = 3.0
+margin_right = 39.0
+margin_bottom = 40.0
+texture = ExtResource( 9 )
