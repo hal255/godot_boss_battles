@@ -26,14 +26,14 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="player/player_body"]
 texture = ExtResource( 2 )
 
-[node name="player_weapon" type="KinematicBody2D" parent="player"]
-position = Vector2( 489, 287 )
+[node name="player_weapon" type="KinematicBody2D" parent="player/player_body"]
+position = Vector2( -34, -3 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="player/player_weapon"]
+[node name="Sprite" type="Sprite" parent="player/player_body/player_weapon"]
 texture = ExtResource( 4 )
 
 [node name="enemies" type="Node" parent="."]

@@ -4,7 +4,7 @@ var player_weapon_sprite
 var weapon_texture
 
 func _ready():
-	player_weapon_sprite = get_tree().get_root().get_node('./world/player/player_weapon/Sprite')
+	player_weapon_sprite = get_tree().get_root().get_node('./world/player/player_body/player_weapon/Sprite')
 	weapon_texture = 'res://assets/art/my_kenney_assets/cursorSword_gold.png'
 
 # Called when the node enters the scene tree for the first time.
