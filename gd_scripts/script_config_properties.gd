@@ -1,3 +1,6 @@
+# this script serves as a property config class with given filename
+# not intended to attach to a scene object
+
 extends Node
 var DEBUG = false
 

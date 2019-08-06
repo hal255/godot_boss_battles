@@ -1,52 +1,39 @@
 extends KinematicBody2D
 
-#onready var config_script = preload('res://gd_scripts/config_properties.gd')
-#
-#var DEBUG = true
-#
-#var motion = Vector2()
-#var h_direction = 0
-#var v_direction = 0
-#var config_properties = null
-#var in_animation = false
-#
-## weapon swing motion
-#var velocity = Vector2()
-#var rotation_dir = 0
-#
-#func _ready():
-#	var config_file = 'config.json'
-#	var temp_config = config_script.new()
-#	config_properties = temp_config.get_config(config_file)['config_properties']
-#	temp_config = null
-#	if DEBUG:
-#		print('running player_weapon')
-#
-#func _physics_process(delta):
-#    rotation += rotation_dir * rotation_speed * delta
-#    velocity = move_and_slide(velocity)
-
 export (int) var speed = 200
 export (float) var rotation_speed = 1.5
 
 var velocity = Vector2()
-var rotation_dir = 0
+var is_animating = false
 
-func get_input():
-	rotation_dir = 0
-	velocity = Vector2()
-	if Input.is_key_pressed(KEY_L):
-		rotation_dir += 1
-	if Input.is_key_pressed(KEY_J):
-		rotation_dir -= 1
-	if Input.is_key_pressed(KEY_K):
-		velocity = Vector2(-speed, 0).rotated(rotation)
-	if Input.is_key_pressed(KEY_I):
-		velocity = Vector2(speed, 0).rotated(rotation)
+var prev_position = position
+var target_pos = Vector2()
 
 func _physics_process(delta):
-	get_input()
-	if Input.is_mouse_button_pressed(BUTTON_LEFT):
-		rotation = -2.5
-#	print(rotation)
-	velocity = move_and_slide(velocity)
+	move_and_slide(target_pos * delta)
+#	velocity = move_and_slide(target_pos)
+
+func animate_poke():
+	var player_body_node = get_parent().toggle_is_attacking(true)
+	rotation = deg2rad(-135)
+	poke()
+
+func poke():
+	var weapon_size_y = get_node('Sprite').get_rect().size[1]
+	var player_rotation = get_parent().get_player_rotation()
+	target_pos = Vector2(0, weapon_size_y).rotated(player_rotation) * speed
+	
+
+func cancel_poke():
+	var player_body_node = get_parent().toggle_is_attacking(false)
+	rotation = deg2rad(0)
+	target_pos = Vector2(0,0)
+	is_animating = false
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			if not is_animating:
+				animate_poke()
+		if event.button_index == BUTTON_LEFT and not event.pressed:
+			cancel_poke()
