@@ -42,19 +42,34 @@ func _physics_process(delta):
 		
 	move_and_slide(motion)
 	
+#func flip_player_image():
+#	# flip horizontal
+#	if Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_A):
+#		h_direction = -1.5708
+#	elif Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D):
+#		h_direction = 1.5708
+#
+#	# flip vertical
+#	if Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_W):
+#		v_direction = -314159
+#	elif Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_S):
+#		v_direction = 0
+#
+#	get_node('Sprite').set_flip_h(h_direction)
+#	get_node('Sprite').set_flip_v(v_direction)
+
 func flip_player_image():
 	# flip horizontal
 	if Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_A):
-		h_direction = 0
+		rotation = deg2rad(90)
 	elif Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D):
-		h_direction = 1
+		rotation = deg2rad(-90)
 	
 	# flip vertical
 	if Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_W):
-		v_direction = 1
+		rotation = deg2rad(180)
 	elif Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_S):
-		v_direction = 0
+		rotation = deg2rad(0)
 
-	get_node('Sprite').set_flip_h(h_direction)
-	get_node('Sprite').set_flip_v(v_direction)
+	motion.rotated(rotation)
 
