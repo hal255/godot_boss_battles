@@ -61,6 +61,10 @@ func flip_player_image():
 
 func toggle_is_attacking(attack_mode):
 	is_attacking = attack_mode
+	return is_attacking
 	
 func get_player_rotation():
 	return rotation
+
+func get_player_position():
+	return position
