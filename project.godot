@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Test_Godot"
+config/name="godot_boss_battles"
 run/main_scene="res://scenes/World.tscn"
 config/icon="res://assets/art/icon.png"
 

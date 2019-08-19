@@ -14,9 +14,8 @@ var config_properties = null
 var is_attacking = false
 
 func _ready():
-	var config_file = 'config.json'
 	var temp_config = config_script.new()
-	config_properties = temp_config.get_config(config_file)['config_properties']
+	config_properties = temp_config.get_config()
 	temp_config = null
 	if DEBUG:
 		print('running player_movement')
