@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/scene_controller.tscn" type="PackedScene" id=2]
+
+[node name="Stage01" type="Node2D"]
+
+[node name="scene_controller" parent="." instance=ExtResource( 2 )]
+
+[node name="player" parent="." instance=ExtResource( 1 )]
